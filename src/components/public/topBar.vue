@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import title from '../../directive/title'
+import title from '../../directive/titleName.js'
 export default {
   data () {
     return {
