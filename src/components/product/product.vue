@@ -14,7 +14,7 @@ export default {
   data () {
     return {
       titleName: '产品',
-      imgDatas: [require('../../assets/images/banner1.png'), require('../../assets/images/banner2.png')]
+      imgDatas: [require('../../assets/images/1.jpg'), require('../../assets/images/2.jpg')]
     }
   },
   components: {
@@ -22,9 +22,6 @@ export default {
     banner
   },
   methods: {
-    goHome (event) {
-      this.$router.push('/home')
-    }
   }
 }
 </script>

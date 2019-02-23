@@ -14,7 +14,7 @@ export default {
   data () {
     return {
       titleName: '首页',
-      imgDatas: [require('../../assets/images/banner1.png'), require('../../assets/images/banner2.png'), require('../../assets/images/banner3.png')]
+      imgDatas: [require('../../assets/images/1.jpg'), require('../../assets/images/2.jpg'), require('../../assets/images/3.jpg')]
     }
   },
   components: {
@@ -24,9 +24,6 @@ export default {
   mounted: function () {
   },
   methods: {
-    goHome (event) {
-      this.$router.push('/home')
-    }
   }
 }
 </script>

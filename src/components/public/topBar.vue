@@ -16,6 +16,9 @@ export default {
   mounted: function () {
   },
   methods: {
+    goHome (event) {
+      this.$router.push('/home')
+    }
   },
   directives: {
     title

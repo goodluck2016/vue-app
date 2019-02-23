@@ -14,9 +14,6 @@ export default {
     }
   },
   methods: {
-    goHome (event) {
-      this.$router.push('/home')
-    }
   },
   components: {
     topBar

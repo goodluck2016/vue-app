@@ -13,10 +13,13 @@ export default {
       titleName: '我们'
     }
   },
+  mounted () {
+    this.$store.dispatch('hideNav')
+  },
+  destroyed () {
+    this.$store.dispatch('showNav')
+  },
   methods: {
-    goHome (event) {
-      this.$router.push('/home')
-    }
   },
   components: {
     topBar
