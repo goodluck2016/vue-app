@@ -3,27 +3,38 @@
     <topBar :titleName='titleName'/>
     <div class="main">
       <banner :imgDatas='imgDatas' />
+      <homeList :listDatas='listDatas' />
     </div>
   </div>
 </template>
 <script>
 import topBar from '../public/topBar'
 import banner from '../public/banner'
+import homeList from '../home/homeList'
 export default {
   name: 'home',
   data () {
     return {
       titleName: '首页',
-      imgDatas: [require('../../assets/images/1.jpg'), require('../../assets/images/2.jpg'), require('../../assets/images/3.jpg')]
+      imgDatas: [require('../../assets/images/1.jpg'), require('../../assets/images/2.jpg'), require('../../assets/images/3.jpg')],
+      listDatas: []
     }
   },
   components: {
     topBar,
-    banner
+    banner,
+    homeList
   },
   mounted: function () {
+    this.getList()
   },
   methods: {
+    getList () {
+      let self = this
+      self.$http.get('home').then((res) => {
+        self.listDatas = res.data
+      })
+    }
   }
 }
 </script>
