@@ -8,10 +8,10 @@
                     <label>首页</label>
                 </a>
             </router-link>
-            <router-link tag="li" to="/product" class="tabItem">
+            <router-link tag="li" to="/category" class="tabItem">
                 <a href="#" class="tab-item-link">
                     <i class="iconfont">&#xe60c;</i>
-                    <label>产品</label>
+                    <label>分类</label>
                 </a>
             </router-link>
             <router-link tag="li" to="/agent" class="tabItem">
