@@ -45,6 +45,8 @@ export default {
   padding:8px;
   background: #fff;
   height:76px;
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
 }
 .imgBox{
   float:left;
@@ -53,14 +55,16 @@ export default {
   margin-right: 6px;
 }
 .imgBox img{
-  width:60px;
-  height:60px;
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+  margin:10px;
 }
 .item-r{
   text-align:left;
 }
 .proName{
-  font-size:15px;
+  font-size:14px;
   color:#333;
   line-height:18px;
   max-height:36px;
@@ -68,7 +72,7 @@ export default {
   overflow: hidden;
 }
 .proPrice{
-  font-size:13px;
+  font-size:12px;
   color:#999;
 }
 .oPrice{
@@ -81,7 +85,7 @@ export default {
 }
 .upPrice{
   display:inline-block;
-  font-size:16px;
+  font-size:14px;
   color:#f60;
   margin-left:10px;
 }
