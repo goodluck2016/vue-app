@@ -17,63 +17,56 @@ export default new Router({
   linkActiveClass: 'active',
   routes: [
     {
-      path: '/',
-      redirect: '/home'
-    },
-    {
       path: '/register',
-      name: 'register',
       component: register
     },
     {
       path: '/login',
-      name: 'login',
       component: login
     },
     {
       path: '/home',
-      name: 'home',
       component: home
     },
     {
       path: '/category',
-      name: 'category',
+      component: category
+    },
+    {
+      path: '/category/:id',
       component: category
     },
     {
       path: '/search',
-      name: 'search',
       component: search
     },
     {
       path: '/product',
-      name: 'product',
       component: product
     },
     {
-      path: '/detail',
-      name: 'detail',
+      path: '/detail/:id',
       component: detail
     },
     {
       path: '/cart',
-      name: 'cart',
       component: cart
     },
     {
       path: '/agent',
-      name: 'agent',
       component: agent
     },
     {
       path: '/cases',
-      name: 'cases',
       component: cases
     },
     {
       path: '/about',
-      name: 'about',
       component: about
+    },
+    {
+      path: '/',
+      redirect: '/about'
     },
     {
       path: '*',
