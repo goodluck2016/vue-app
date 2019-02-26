@@ -33,7 +33,7 @@ body {
 .category_content .category_left ul {}
 
 .category_content .category_left ul li {
-    height: 50px;
+    height: 46px;
     width: 90px;
     background: #f3f4f6;
     font-size: 12px;
@@ -41,17 +41,19 @@ body {
 }
 
 .category_content .category_left ul li a {
-    height: 50px;
+    height: 46px;
     width: 90px;
     display: block;
     text-align: center;
-    line-height: 50px;
+    line-height: 46px;
     border-right: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
 }
 
 .category_content .category_left ul li.now {
     background: #fff;
+    border-left: 3px solid #f15353;
+    box-sizing: border-box;
 }
 
 .category_content .category_left ul li.now a {
