@@ -1,11 +1,12 @@
 <template>
-  <div class="cart">
-    <topBar :titleName='titleName'/>
-    <div class="main"></div>
+  <div class="category">
+    <categoryHead />
+    <categoryMain />
   </div>
 </template>
 <script>
-import topBar from '../public/topBar'
+import categoryHead from '../category/categoryHead'
+import categoryMain from '../category/categoryMain'
 export default {
   name: 'category',
   data () {
@@ -14,17 +15,19 @@ export default {
     }
   },
   mounted () {
-    // this.$store.dispatch('hideNav')
+    this.$store.dispatch('hideNav')
   },
   destroyed () {
-    // this.$store.dispatch('showNav')
+    this.$store.dispatch('showNav')
   },
   methods: {
   },
   components: {
-    topBar
+    categoryHead,
+    categoryMain
   }
 }
 </script>
-<style scoped>
+<style>
+@import '../../assets/css/category.css'
 </style>
