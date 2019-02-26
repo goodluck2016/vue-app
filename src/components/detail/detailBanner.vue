@@ -1,11 +1,11 @@
 <template>
-  <div class="banner">
-    <ul class="imgList">
-      <li class="banner-item" v-for="(item, i) in imgDatas" :key="i" v-show="i === num">
-        <img :src="item" alt="" class="banner-img">
+  <div class="banner_box ">
+    <ul class="banner_child_box">
+      <li class="banner_item" v-for="(item, i) in imgDatas" :key="i" v-show="i === num">
+        <img :src="item" alt="" class="banner_pic">
       </li>
     </ul>
-    <ul class="circleList">
+    <ul class="banner_count">
       <li><span class="active">{{num+1}}</span>/{{imgDatas.length}}</li>
     </ul>
   </div>
@@ -35,7 +35,7 @@ export default {
 }
 </script>
 <style scoped>
-.banner {
+/*.banner {
     width: 100%;
     overflow: hidden;
     position: relative;
@@ -56,7 +56,6 @@ export default {
     height: 20px;
     position: absolute;
     left: 90%;
-    /*transform: translate(-50%, -50%); */
     bottom: -2px;
 }
 .banner ul:last-child li {
@@ -75,5 +74,5 @@ export default {
 }
 .banner ul:last-child li.active,.active{
     color:#f60;
-}
+}*/
 </style>

@@ -6,31 +6,21 @@
         <banner :imgDatas ='goodsImgs' v-if="flag"/>
       </section>
       <section class="product_info clearfix">
-        <p class="p_name">小王子花梨木精装原木便携手机蓝牙音箱</p>
-        <div class="product_pric">
-          <span>￥</span>
-          <span class="rel_price">666</span>
-          <span>.00</span>
-          <span>￥698.00</span>
-          <div class="product_right">已售1152</div>
+        <div class="product_left">
+          <p class="p_name">小程序</p>
+          <div class="product_pric">
+            <span>￥</span>
+            <span class="rel_price">666</span>
+            <span>.00</span>
+          </div>
+          <div class="product_right">降价通知</div>
         </div>
       </section>
       <section class="product_intro">
         <p class="pro_det">商品详情</p>
-        <div class="pro_c">
-          <img src="../../assets/images/3.jpg" />
-          <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
-        </div>
       </section>
-      <footer class="cartFooter">
+      <footer class="cart_d_footer">
         <div class="m">
-          <div class="cartFooterL">
-            <div class="cartbox"></div>
-            <div class="pricebox">
-              <p class="priceNow"><b>￥</b>107.8</p>
-              <p class="priceDeliver">另需配送费5元</p>
-            </div>
-          </div>
           <div class="btn_box clearfix" >
             <a href="javascript:void(0)" class="buy_now" @click="addToCart">加入购物车</a>
             <a href="javascript:void(0)" class="buybuy" @click="buyNow">立即购买</a>
@@ -72,6 +62,6 @@ export default {
   }
 }
 </script>
-<style>
-@import '../../assets/css/detail.css'
+<style scoped>
+@import '../../assets/css/detail2.css'
 </style>
