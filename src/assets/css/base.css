@@ -72,7 +72,7 @@ font-face {
     color: #333;
     border-bottom: 1px solid #e0e0e0;
     position: fixed;
-    z-index: 2;
+    z-index: 992;
 }
 .topBar .icon_back {
     height: 20px;
