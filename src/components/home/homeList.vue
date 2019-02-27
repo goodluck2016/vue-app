@@ -1,6 +1,6 @@
 <template>
   <div class="homeList">
-    <div class="homeList-item" v-for="(item, index) in listDatas" :key="index">
+    <router-link class="homeList-item" v-for="item in listDatas" :key="item.product_id" :to="'/detail/'+item.product_id" tag="div">
       <div class="imgBox">
         <img :src="item.product_img_url" />
       </div>
@@ -10,7 +10,7 @@
           <span class="oPrice"><i>￥</i>{{item.product_price}}</span> <span class="upPrice"><i>￥</i>{{item.product_uprice}}</span>
         </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 <script>
@@ -18,25 +18,25 @@ export default {
   name: 'homeList',
   data () {
     return {
-      // listDatas: [],
+      listDatas: []
       // imgDatas: [require('../../assets/images/1.jpg'), require('../../assets/images/2.jpg'), require('../../assets/images/3.jpg')]
     }
   },
   components: {
   },
   mounted () {
-    // this.getList()
+    this.getList()
   },
-  props: ['listDatas'],
+  // props: ['listDatas'],
   methods: {
-    // getList () {
-    //   let self = this
-    //   self.$http.get('home').then((res) => {
-    //     console.log('listDatas', res.data)
-    //     // self.listDatas = res.data
-    //     self.listDatas.push(res.data[0])
-    //   })
-    // }
+    getList () {
+      let self = this
+      self.$http.get('home').then((res) => {
+        console.log('listDatas', res.data)
+        self.listDatas = res.data
+        // self.listDatas.push(res.data[0])
+      })
+    }
   }
 }
 </script>
