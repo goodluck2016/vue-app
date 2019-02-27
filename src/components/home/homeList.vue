@@ -32,7 +32,7 @@ export default {
     getList () {
       let self = this
       self.$http.get('home').then((res) => {
-        console.log('listDatas', res.data)
+        // console.log('listDatas', res.data)
         self.listDatas = res.data
         // self.listDatas.push(res.data[0])
       })
