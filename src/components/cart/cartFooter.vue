@@ -2,13 +2,13 @@
   <div class="">
     <footer class="cart_footer">
       <div class="all_check_box">
-        <input type ="checkbox" class="check_box" v-model="checkAllState" @change="checkAllChange()"/>
+        <input type ="checkbox" v-model="checkAllState" @change="checkAllChange()"/>
         <span>全选</span>
       </div>
       <div class="count_money_box">
         <div class="heji">
           <span>合计:</span>
-          <span>￥</span><span>{{total}}</span>
+          <span>￥</span><span>{{total.toFixed(2)}}</span>
         </div>
         <!-- <div class="total_money clearfix">
           <span>总额:</span>

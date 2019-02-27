@@ -1,8 +1,8 @@
 <template>
   <div class="cart">
     <topBar :titleName='titleName'/>
-    <cartMain />
-    <cartFooter />
+    <cartMain/>
+    <cartFooter/>
   </div>
 </template>
 <script>
