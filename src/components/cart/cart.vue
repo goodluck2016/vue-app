@@ -1,11 +1,14 @@
 <template>
   <div class="cart">
     <topBar :titleName='titleName'/>
-    <div class="main"></div>
+    <cartMain />
+    <cartFooter />
   </div>
 </template>
 <script>
 import topBar from '../public/topBar'
+import cartMain from '../cart/cartMain'
+import cartFooter from '../cart/cartFooter'
 export default {
   name: 'cart',
   data () {
@@ -22,9 +25,12 @@ export default {
   methods: {
   },
   components: {
-    topBar
+    topBar,
+    cartMain,
+    cartFooter
   }
 }
 </script>
-<style scoped>
+<style>
+@import '../../assets/css/cart.css'
 </style>
