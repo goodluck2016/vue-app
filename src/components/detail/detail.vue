@@ -51,16 +51,31 @@ export default {
       num: 0,
       goodsImgs: [require('../../assets/images/1.jpg'), require('../../assets/images/2.jpg'), require('../../assets/images/3.jpg')],
       flag: true,
-      goodsObj: {}
+      goodsObj: []
     }
   },
   mounted () {
     this.$store.dispatch('hideNav')
+    if (this.$route.params.id) {
+      this.getData(this.$route.params.id)
+    }
   },
   destroyed () {
     this.$store.dispatch('showNav')
   },
   methods: {
+    getData (id) {
+      let self = this
+      let params = {
+        mid: id
+      }
+      self.$http.get('/detail', params).then((res) => {
+        // console.log('res', res)
+        self.goodsObj = res.data
+        // self.goodsObj = JSON.parse(JSON.stringify(res.data))
+        console.log('goodsObj', self.goodsObj)
+      })
+    },
     addToCart () {
     },
     buyNow () {
