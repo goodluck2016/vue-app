@@ -21,6 +21,9 @@ export default {
   mounted: function () {
     this.play()
   },
+  destroyed () {
+    clearInterval(this.autoPlay)
+  },
   methods: {
     autoPlay: function () {
       this.num++
