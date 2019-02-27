@@ -15,9 +15,6 @@ var getters = {
   cartDatas (state) {
     return state.cartDatas
   },
-  checkAllState (state) {
-    return state.checkAllState
-  },
   total (state) {
     let select = state.cartDatas.filter((v) => {
       return v.check === true
@@ -41,6 +38,9 @@ var getters = {
     } else {
       return 0
     }
+  },
+  checkAllState (state) {
+    return state.checkAllState
   }
 }
 
