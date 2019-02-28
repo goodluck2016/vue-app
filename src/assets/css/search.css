@@ -1,0 +1,145 @@
+body {
+    background-color: #fafafa;
+}
+
+.h_layout {
+    min-width: 300px;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    height: 1000px;
+    background-color: #fafafa;
+}
+
+.h_layout .top_bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 2;
+}
+
+.h_layout .search_condition {
+    background-color: #fff;
+    width: 100%;
+    height: 40px;
+    margin-top: 40px;
+    border-bottom: 1px solid #DFDFDF;
+    border-top: 1px solid #DFDFDF;
+}
+
+.search_condition ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.search_condition ul li {
+    width: 25%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+}
+
+li em {
+    width: 8px;
+    height: 7px;
+    display: inline-block;
+    /*background: url("../images/jd-sprites.png") no-repeat;*/
+    background-size: 200px 200px;
+}
+
+.all_icon {
+    background-position: 0 -109px;
+}
+
+.price_up {
+    background-position: -170px -28px;
+}
+
+.price_down {
+    background-position: -170px -36px;
+    margin-left: -12px;
+}
+
+.saixuan {
+    width: 15px;
+    height: 13px;
+    display: inline-block;
+    /*background: url("../images/jd-search-sprites.png") no-repeat;*/
+    background-size: 200px 200px;
+    background-position: -178px 3px;
+    margin-left: -4px;
+}
+
+.all {
+    color: #F23030;
+}
+
+.main_goods_box {
+    width: 100%;
+    margin-top: 10px;
+    padding-bottom: 60px;
+}
+.no-msg{
+    padding:10px;
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+}
+.main_goods_box .goods_item {
+    background-color: #fff;
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+.main_goods_box .goods_item:first-child{
+    border-top: 1px solid #DFDFDF;
+}
+.goods_item .goods_item_link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.goods_item_link .goods_item_pic {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+.goods_item_link .goods_right {
+    position: absolute;
+    left: 104px;
+    top: 0;
+    height: 100%;
+}
+
+.goods_right .pp_name {
+    height: 40%;
+    overflow: hidden;
+}
+.goods_right .pp_name span{
+    line-height:20px;
+}
+
+.goods_right .price_box {
+    color: #F34545;
+    height: 20%;
+    line-height: 20px;
+    margin-top: 10px;
+}
+
+.goods_right .price_box span:nth-child(2) {
+    font-size: 18px;
+    margin: 0 -3px;
+}
+
+.goods_right .pinglun_box {
+    margin-top: 5px;
+    color: #848689;
+}
