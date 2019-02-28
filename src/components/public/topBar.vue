@@ -1,6 +1,6 @@
 <template>
   <div class="topBar">
-    <a onclick="window.history.go(-1)" class="icon_back"></a>
+    <a @click="goBack()" class="icon_back"></a>
     <h3 class="cartname" v-title :data-title="titleName">{{titleName}}</h3>
     <router-link class="icon_menu" to="/home"><i class="iconfont">&#xe60d;</i></router-link>
     <!-- <a href="#" class="icon_menu" @click="goHome($event)"><i class="iconfont">&#xe60d;</i></a> -->
@@ -17,6 +17,9 @@ export default {
   mounted: function () {
   },
   methods: {
+    goBack () {
+      window.history.go(-1)
+    }
     // goHome (event) {
     //   this.$router.push('/home')
     // }
