@@ -6,7 +6,7 @@
         <banner :imgDatas ='goodsImgs' v-if="flag"/>
       </section>
       <section class="product_info clearfix">
-        <p class="p_name">小王子花梨木精装原木便携手机蓝牙音箱</p>
+        <p class="p_name">{{goodsData.product_name}}</p>
         <div class="product_pric">
           <span>￥</span>
           <span class="rel_price">{{goodsData.product_uprice}}</span>
@@ -18,17 +18,17 @@
       <section class="product_intro">
         <p class="pro_det">商品详情</p>
         <div class="pro_c">
-          <img src="../../assets/images/3.jpg" />
+          <!-- <img src="../../assets/images/3.jpg" /> -->
           <p>{{goodsData.product_detail}}</p>
         </div>
       </section>
-      <footer class="cartFooter">
+      <div class="cartFooter">
         <div class="m">
           <div class="cartFooterL">
             <div class="cartbox"></div>
             <div class="pricebox">
-              <p class="priceNow"><b>￥</b>107.8</p>
-              <p class="priceDeliver">另需配送费5元</p>
+              <p class="priceNow"><b>￥</b>{{goodsData.product_uprice}}</p>
+              <p class="priceDeliver">另需配送费{{goodsData.priceDeliver}}元</p>
             </div>
           </div>
           <div class="btn_box clearfix" >
@@ -36,7 +36,7 @@
             <a href="javascript:void(0)" class="buybuy" @click="buyNow()">立即购买</a>
           </div>
         </div>
-      </footer>
+      </div>
     </main>
   </div>
 </template>
@@ -63,13 +63,14 @@ export default {
           product_hot: 1,
           product_id: 5,
           product_img_url: 'http://s.dodoca.com/whb/mobile/xcx/images/xcx/i-v-sxgs.jpg',
-          product_name: '小程序',
-          product_num: '100',
+          product_name: '小王子花梨木精装原木便携手机蓝牙音箱',
+          product_num: '16',
           product_price: 358,
           product_search_hot: 0,
           product_special: 1,
           product_uprice: 168,
-          shop_id: 3
+          shop_id: 3,
+          priceDeliver: 5
         }
       ]
     }
