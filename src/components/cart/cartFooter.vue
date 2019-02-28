@@ -1,8 +1,8 @@
 <template>
-  <div class="">
+  <div>
     <footer class="cart_footer">
       <div class="all_check_box">
-        <input type ="checkbox" v-model="checkAllState" @change="checkAllChange()"/>
+        <input type ="checkbox" v-model="checkAllState" @change="checkAllChange()" :disabled="totalNum === 0" />
         <span>全选</span>
       </div>
       <div class="count_money_box">
