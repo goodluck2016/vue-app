@@ -7,7 +7,7 @@
           <form class="regForm">
             <div class="item-row">
               <span class="label">用户名</span>
-              <input class="item-ipt" type="number" name="username" v-model="username" placeholder="请输入用户名">
+              <input class="item-ipt" type="text" name="username" v-model="username" placeholder="请输入用户名">
             </div>
             <div class="item-row">
               <span class="label">密&nbsp;&nbsp;&nbsp;码</span>
@@ -46,18 +46,16 @@ export default {
       } else {
         let self = this
         let data = {
-          username: self.username,
-          password: self.password
+          loginName: this.username,
+          loginPawd: this.password
         }
         self.$http.post('/reg', data).then((res) => {
           // console.log('status', res.status)
           // console.log('data.status', res.data.status)
-          if (res.status === '200') {
-            if (res.data.status === '1') {
-              console('报告主银，注册成功！')
-            }
+          if (res.status === 200) {
+            console.log('报告主银，注册成功！')
           } else {
-            // alert('请求失败！')
+            console.log(res.data.msg)
           }
         }, (error) => {
           console.log(error)
