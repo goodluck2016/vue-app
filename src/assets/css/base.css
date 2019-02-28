@@ -33,7 +33,9 @@ textarea {
     /*清除移动设备中表单的默认样式*/
     -webkit-appearance: none;
 }
-
+input::-webkit-input-placeholder {
+    color:#ccc;
+}
 .clearfix::before,
 .clearfix::after {
     content: '.';
@@ -110,6 +112,7 @@ font-face {
     border-radius: 4px;
     border: 1px solid #bfbfbf;
     margin-top: 5px;
+    color: #666;
 }
 .topBar .icon_menu {
     height: 44px;
