@@ -14,10 +14,10 @@
                     <label>分类</label>
                 </a>
             </router-link>
-            <router-link tag="li" to="/agent" class="tabItem">
+            <router-link tag="li" to="/my" class="tabItem">
                 <a href="#" class="tab-item-link">
                     <i class="iconfont">&#xe657;</i>
-                    <label>代理</label>
+                    <label>我的</label>
                 </a>
             </router-link>
             <router-link tag="li" to="/cases" class="tabItem">
