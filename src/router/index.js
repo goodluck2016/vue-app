@@ -5,6 +5,7 @@ import login from '@/components/login/login'
 import home from '@/components/home/home'
 import category from '@/components/category/category'
 import search from '@/components/search/search'
+import my from '@/components/my/my'
 import product from '@/components/product/product'
 import detail from '@/components/detail/detail'
 import cart from '@/components/cart/cart'
@@ -53,6 +54,10 @@ export default new Router({
       component: cart
     },
     {
+      path: '/my',
+      component: my
+    },
+    {
       path: '/agent',
       component: agent
     },
@@ -66,7 +71,7 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: '/about'
+      redirect: '/home'
     },
     {
       path: '*',
