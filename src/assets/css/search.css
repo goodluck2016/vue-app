@@ -3,8 +3,7 @@ body {
 }
 
 .h_layout {
-    min-width: 300px;
-    max-width: 640px;
+    width: 100%;
     margin: 0 auto;
     position: relative;
     height: 1000px;
@@ -47,7 +46,6 @@ li em {
     width: 8px;
     height: 7px;
     display: inline-block;
-    /*background: url("../images/jd-sprites.png") no-repeat;*/
     background-size: 200px 200px;
 }
 
@@ -68,7 +66,6 @@ li em {
     width: 15px;
     height: 13px;
     display: inline-block;
-    /*background: url("../images/jd-search-sprites.png") no-repeat;*/
     background-size: 200px 200px;
     background-position: -178px 3px;
     margin-left: -4px;
