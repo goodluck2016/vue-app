@@ -5,6 +5,9 @@
 body {
     background-color: #f0f3f6;
 }
+.cart_has{
+    padding-bottom: 50px;
+}
 .cartMain {
     width: 100%;
     margin-top:45px;
@@ -69,9 +72,9 @@ body {
 }
 
 .cart_content {
+    padding-top: 46px;
     background-color: #fff;
     margin-bottom:10px;
-    /*margin: 10px 8px 0px 8px;*/
     overflow: hidden;
 }
 
@@ -161,10 +164,8 @@ input[type='checkbox']:disabled{
 }
 
 .cart_item .cart_detial_box {
-    /*float: left;*/
     background-color: #fff;
     margin-left: 30px;
-    /*width: 100%;*/
 }
 
 .cart_product_link {
