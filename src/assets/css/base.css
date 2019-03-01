@@ -173,6 +173,10 @@ font-face {
     width: 24px;
 }
 
+.login{
+    position: relative;
+    width: 100%;
+}
 /*login*/
 .form-box{
   width: 100%;
