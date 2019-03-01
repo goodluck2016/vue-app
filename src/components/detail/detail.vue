@@ -3,7 +3,8 @@
     <topBar :titleName='titleName'/>
     <main class="detail_box">
       <section class="banner_box">
-        <banner :imgDatas ='goodsImgs' v-if="flag"/>
+        <banner :imgDatas ="imgDatas" v-if="flag"/>
+        <!-- <img src="../../assets/images/3.jpg" width="100%" /> -->
       </section>
       <section class="product_info clearfix">
         <p class="p_name">{{goodsData.product_name}}</p>
@@ -18,7 +19,6 @@
       <section class="product_intro">
         <p class="pro_det">商品详情</p>
         <div class="pro_c">
-          <!-- <img src="../../assets/images/3.jpg" /> -->
           <p>{{goodsData.product_detail}}</p>
         </div>
       </section>
@@ -49,10 +49,10 @@ export default {
     return {
       titleName: '商品详情',
       num: 0,
-      goodsImgs: [
-        require('../../assets/images/1.jpg'),
-        require('../../assets/images/2.jpg'),
-        require('../../assets/images/3.jpg')
+      imgDatas: [
+        // {image_url: require('../../assets/images/1.jpg')},
+        // {image_url: require('../../assets/images/2.jpg')},
+        // {image_url: require('../../assets/images/3.jpg')}
       ],
       goodsData: [
         {
@@ -91,7 +91,8 @@ export default {
         mId: id
       }
       self.$http.get('/detail', {params}).then((res) => {
-        // self.goodsImgs = res.data[0]
+        self.imgDatas = res.data[0]
+        self.flag = true
         self.goodsData = res.data[1][0]
         // self.goodsData = JSON.parse(JSON.stringify(res.data))
         // console.log('goodsData', self.goodsData)

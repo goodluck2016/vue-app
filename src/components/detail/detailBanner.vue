@@ -2,7 +2,7 @@
   <div class="banner_box ">
     <ul class="banner_child_box">
       <li class="banner_item" v-for="(item, i) in imgDatas" :key="i" v-show="i === num">
-        <img :src="item" alt="" class="banner_pic">
+        <img :src="item.image_url" alt="" class="banner_pic">
       </li>
     </ul>
     <ul class="banner_count">
