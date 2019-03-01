@@ -54,7 +54,6 @@ export default {
         require('../../assets/images/2.jpg'),
         require('../../assets/images/3.jpg')
       ],
-      flag: true,
       goodsData: [
         {
           category_id: 3,
@@ -72,7 +71,8 @@ export default {
           shop_id: 3,
           priceDeliver: 5
         }
-      ]
+      ],
+      flag: false
     }
   },
   mounted () {
