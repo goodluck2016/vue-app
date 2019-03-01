@@ -136,16 +136,10 @@ body {
 .product_right {
     float: right;
     margin-right: 10px;
-    /*border: 1px solid #bfbfbf;*/
-    /*border-radius: 4px;*/
     color: #999;
     font-size: 14px;
     text-align: right;
     line-height: 20px;
-    /*padding: 10px 14px;*/
-    /*position: absolute;*/
-    /*right: 10px;*/
-    /*bottom: 6px;*/
 }
 
 .product_intro {
