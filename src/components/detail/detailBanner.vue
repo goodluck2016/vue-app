@@ -18,8 +18,11 @@ export default {
     }
   },
   props: ['imgDatas'],
-  mounted: function () {
+  mounted () {
     this.play()
+  },
+  destroyed () {
+    clearInterval(this.autoPlay)
   },
   methods: {
     autoPlay: function () {
