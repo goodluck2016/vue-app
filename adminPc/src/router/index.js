@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NotFound from '@/views/404'
 import login from '@/views/login/login'
-import main from '@/views/main/main'
+import main from '@/views/main'
 import home from '@/views/home/home'
 
 Vue.use(Router)
