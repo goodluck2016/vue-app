@@ -8,7 +8,7 @@ export default {
   name: 'main',
   data () {
     return {
-      msg: 'main'
+      msg: '主银，没有找到您要访问的页面，请检查输入的URL是否正确哦。'
     }
   }
 }
