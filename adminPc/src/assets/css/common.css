@@ -8,6 +8,10 @@ body {
   font-size: 14px;
   line-height: 1.3
 }
+html,body{
+  width:100%;
+  height:100%;
+}
 h1, h2 {
   font-weight: normal;
 }
@@ -16,4 +20,34 @@ ul,li{
 }
 a {
   color: #42b983;
+}
+.wrap{
+  width:100%;
+  min-height:100%;
+}
+.header{
+    width:100%;
+    height:60px;
+    background: #fff;
+    border-bottom:1px solid #e0e0e0;
+}
+.logo{
+    margin: 10px 30px;
+    width:100px;
+    height:40px;
+    border:1px solid rgba(255,255,255,.3);
+}
+.main{
+    width:100%;
+    min-height:746px;
+}
+.footer{
+    width:100%;
+    padding:10px;
+    background: #eee;
+}
+.footer p{
+    font-size:12px;
+    color:#999;
+    text-align: center;
 }
