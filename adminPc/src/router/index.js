@@ -1,36 +1,76 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import NotFound from '@/views/404'
-import login from '@/views/login/login'
-import main from '@/views/main'
-import home from '@/views/home/home'
+// import Vue from 'vue'
+// import Router from 'vue-router'
+import NotFound from '@/components/NotFound'
+import loginRouter from '@/router/login.router'
+import main from '@/components/main'
+import index from '@/components/index'
+import datas from '@/components/datas/datas'
+import marketing from '@/components/marketing/marketing'
+import member from '@/components/member/member'
+import user from '@/components/user/user'
+import points from '@/components/points/points'
+import goods from '@/components/goods/goods'
+import order from '@/components/order/order'
+import manager from '@/components/manager/manager'
+import setting from '@/components/setting/setting'
+// Vue.use(Router)
 
-Vue.use(Router)
-
-export default new Router({
-  routes: [
-    {
-      path: '/login',
-      name: 'login',
-      component: login
-    },
-    {
-      path: '/main',
-      name: 'main',
-      component: main
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: home
-    },
-    {
-      path: '/',
-      redirect: home
-    },
-    {
-      path: '*',
-      component: NotFound
-    }
-  ]
-})
+const routers = [
+  {
+    path: '/',
+    redirect: '/main/index'
+  },
+  {
+    name: 'main',
+    path: '/main',
+    component: main,
+    children: [
+      {
+        path: 'index',
+        component: index
+      },
+      {
+        path: 'datas',
+        component: datas
+      },
+      {
+        path: 'marketing',
+        component: marketing
+      },
+      {
+        path: 'member',
+        component: member
+      },
+      {
+        path: 'user',
+        component: user
+      },
+      {
+        path: 'points',
+        component: points
+      },
+      {
+        path: 'goods',
+        component: goods
+      },
+      {
+        path: 'order',
+        component: order
+      },
+      {
+        path: 'manager',
+        component: manager
+      },
+      {
+        path: 'setting',
+        component: setting
+      }
+    ]
+  },
+  {
+    path: '*',
+    component: NotFound
+  }
+]
+routers.unshift(loginRouter)
+export default routers
