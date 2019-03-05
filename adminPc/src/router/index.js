@@ -18,6 +18,7 @@ import setting from '@/components/setting/setting'
 const routers = [
   {
     path: '/',
+    component: index,
     redirect: '/main/index'
   },
   {
