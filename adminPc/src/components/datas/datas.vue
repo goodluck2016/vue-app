@@ -113,13 +113,6 @@ export default {
 }
 </script>
 <style scoped>
-.mainbox{
-	margin:25px;
-	padding:30px 20px;
-	background: #fff;
-	border-radius: 5px;
-	box-shadow: 0 0 8px rgba(0,0,0,.15)
-}
 .table-w {
     position: relative;
     border: 1px solid #d7dde4;

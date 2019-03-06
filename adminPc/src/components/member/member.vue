@@ -1,5 +1,5 @@
 <template>
-  <div class="">{{msg}}
+  <div class="mainbox">{{msg}}
   </div>
 </template>
 <script>
