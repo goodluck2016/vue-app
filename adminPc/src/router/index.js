@@ -18,13 +18,15 @@ import setting from '@/components/setting/setting'
 const routers = [
   {
     path: '/',
-    component: index,
-    redirect: '/main/index'
+    // component: index,
+    // redirect: '/main/index'
+    redirect: '/login'
   },
   {
     name: 'main',
     path: '/main',
     component: main,
+    redirect: '/main/index',
     children: [
       {
         path: 'index',
