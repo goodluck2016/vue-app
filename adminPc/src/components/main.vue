@@ -10,8 +10,8 @@
           <router-link to="/main/member" tag="li">会员中心</router-link>
           <router-link to="/main/user" tag="li">用户中心</router-link>
           <router-link to="/main/points" tag="li">积分</router-link>
-          <router-link to="/main/goods" tag="li">商品中心</router-link>
-          <router-link to="/main/order" tag="li">订单中心</router-link>
+          <router-link to="/main/goods" tag="li">产品</router-link>
+          <router-link to="/main/order" tag="li">订单</router-link>
           <router-link to="/main/manager" tag="li">管理员</router-link>
           <router-link to="/main/setting" tag="li">设置</router-link>
         </ul>
