@@ -2,10 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import axios from 'axios'
 import VueRouter from 'vue-router'
 import Routers from './router/index'
 
 Vue.config.productionTip = false
+axios.default.baseURL = 'http://localhost:3333/'
+axios.default.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+Vue.prototype.$http = axios
 Vue.use(VueRouter)
 
 const RouterConfig = {
