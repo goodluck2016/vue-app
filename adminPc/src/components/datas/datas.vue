@@ -1,92 +1,92 @@
 <template>
   <div class="mainbox">
     <div class="table-w">
-    	<div class="table">
-			<div class="table-header">
-			    <table cellspacing="0" cellpadding="0" border="0" >
-				    <colgroup>
-				        <col width="8%"><col width="20%"><col width="20%"><col width="32%"><col width="20%">
-				    </colgroup>
-				    <thead>
-				        <tr>
-				            <th>
-				                <div class="table-cell">序号</div>
-				            </th>
-				            <th>
-				                <div class="table-cell">姓名</div>
-				            </th>
-				            <th>
-				                <div class="table-cell">年龄</div>
-				            </th>
-				            <th>
-				                <div class="table-cell">地址</div>
-				            </th>
-				            <th>
-				                <div class="table-cell">操作</div>
-				            </th>
-				        </tr>
-				    </thead>
-			    </table>
-			</div>	
-			<div class="table-body">
-			    <table cellspacing="0" cellpadding="0" border="0" >
-				    <colgroup>
-				        <col width="8%"><col width="20%"><col width="20%"><col width="32%"><col width="20%">
-				    </colgroup>
-				    <tbody class="table-tbody">
-				        <tr class="table-row" v-for="(item, index) in list" :key="index">
-				            <td>
-				                <div class="table-cell">{{index+1}}</div>
-				            </td>
-				            <td>
-				                <div class="table-cell">{{item.name}}</div>
-				            </td>
-				            <td>
-				                <div class="table-cell">{{item.age}}</div>
-				            </td>
-				            <td>
-				                <div class="table-cell">{{item.address}}</div>
-				            </td>
-				            <td>
-				            	<div class="table-cell">
-				                  <a href="javascript:void(0);" title="查看" class="viewBtn">查看</a>
-				                  <a href="javascript:void(0);" title="编辑" class="EditBtn">编辑</a>
-				                  <a href="javascript:void(0);" title="删除" class="delBtn">删除</a>
-				                </div>
-				            </td>
-				        </tr>
-				    </tbody>
-			    </table>
-			</div>
-			<div class="table-tip" v-if="list.length===0">
-	            <table cellspacing="0" cellpadding="0" border="0">
-	                <tbody>
-	                    <tr>
-	                        <td>暂无数据</td>
-	                    </tr>
-	                </tbody>
-	            </table>
+        <div class="table">
+            <div class="table-header">
+                <table cellspacing="0" cellpadding="0" border="0" >
+                    <colgroup>
+                        <col width="8%"><col width="20%"><col width="20%"><col width="32%"><col width="20%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="table-cell">序号</div>
+                            </th>
+                            <th>
+                                <div class="table-cell">姓名</div>
+                            </th>
+                            <th>
+                                <div class="table-cell">年龄</div>
+                            </th>
+                            <th>
+                                <div class="table-cell">地址</div>
+                            </th>
+                            <th>
+                                <div class="table-cell">操作</div>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="table-body">
+                <table cellspacing="0" cellpadding="0" border="0" >
+                    <colgroup>
+                        <col width="8%"><col width="20%"><col width="20%"><col width="32%"><col width="20%">
+                    </colgroup>
+                    <tbody class="table-tbody">
+                        <tr class="table-row" v-for="(item, index) in list" :key="index">
+                            <td>
+                                <div class="table-cell">{{index+1}}</div>
+                            </td>
+                            <td>
+                                <div class="table-cell">{{item.name}}</div>
+                            </td>
+                            <td>
+                                <div class="table-cell">{{item.age}}</div>
+                            </td>
+                            <td>
+                                <div class="table-cell">{{item.address}}</div>
+                            </td>
+                            <td>
+                                <div class="table-cell">
+                                  <a href="javascript:void(0);" title="查看" class="viewBtn">查看</a>
+                                  <a href="javascript:void(0);" title="编辑" class="EditBtn">编辑</a>
+                                  <a href="javascript:void(0);" title="删除" class="delBtn">删除</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-tip" v-if="list.length===0">
+                <table cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td>暂无数据</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="pagebox">
-            	<ul class="page">
-				    <span class="page-total">共 11 条</span>
-				    <li class="page-prev" title="上一页">
-				        <a><!-- <i class="icon icon-arrow-l"></i> -->&lt;</a>
-				    </li>
-				    <li title="1" class="page-item"><a>1</a></li>
-				    <li class="page-item" title="2"><a>2</a></li>
-				    <li class="page-item" title="3"><a>3</a></li>
-				    <li class="page-item page-item-active" title="4"><a>4</a></li>
-				    <li class="page-item" title="5"><a>5</a></li>
-				    <li class="page-item" title="6"><a>6</a></li>
-				    <li class="page-item-jump-next" title="向后 5 页"><a><!-- <i class="icon icon-arrow-r"></i> -->... </a></li>
-				    <li class="page-item" title="10"><a>10</a></li>
-				    <li class="page-next" title="下一页">
-				        <a><!-- <i class="icon icon-arrow-r"></i> -->&gt;</a>
-				    </li>
-				</ul>
+                <ul class="page">
+                    <span class="page-total">共 11 条</span>
+                    <li class="page-prev" title="上一页">
+                        <a><!-- <i class="icon icon-arrow-l"></i> -->&lt;</a>
+                    </li>
+                    <li title="1" class="page-item"><a>1</a></li>
+                    <li class="page-item" title="2"><a>2</a></li>
+                    <li class="page-item" title="3"><a>3</a></li>
+                    <li class="page-item page-item-active" title="4"><a>4</a></li>
+                    <li class="page-item" title="5"><a>5</a></li>
+                    <li class="page-item" title="6"><a>6</a></li>
+                    <li class="page-item-jump-next" title="向后 5 页"><a><!-- <i class="icon icon-arrow-r"></i> -->... </a></li>
+                    <li class="page-item" title="10"><a>10</a></li>
+                    <li class="page-next" title="下一页">
+                        <a><!-- <i class="icon icon-arrow-r"></i> -->&gt;</a>
+                    </li>
+                </ul>
             </div>
-    	</div>
+        </div>
     </div>
   </div>
 </template>
@@ -106,7 +106,7 @@ export default {
         {id: 8, name: '叶问', age: 26, address: '中国武林大道8栋1201号', check: false},
         {id: 9, name: '战狼', age: 26, address: '地球一号118飞天仓', check: false},
         {id: 10, name: '胡歌', age: 26, address: '上海静安江河大道', check: false},
-        {id: 11, name: '项飞', age: 26, address: '楚国飞天大道1010号', check: false},
+        {id: 11, name: '项飞', age: 26, address: '楚国飞天大道1010号', check: false}
       ]
     }
   }
@@ -178,12 +178,12 @@ export default {
     text-align: center;
 }
 .pagebox{
-	padding:20px;
+    padding:20px;
 }
 .page{
-	height:32px;
-	float:right;
-	margin-bottom: 20px;
+    height:32px;
+    float:right;
+    margin-bottom: 20px;
 }
 .page-total {
     float: left;
@@ -225,7 +225,7 @@ export default {
     color:#666;
 }
 .page-item a,.page-item-jump-next a{
-	color:#666;
+    color:#666;
 }
 .page-next, .page-prev {
     background-color: #fff;
@@ -240,7 +240,7 @@ export default {
     color:#fff;
 }
 .page-item-active a{
-	color:#fff;
+    color:#fff;
 }
 .icon, .select-multiple .select-item-selected:after {
     speak: none;

@@ -16,7 +16,8 @@
             <label>密码</label>
             <input type="text" v-model="form.password" placeholder="请输入密码">
           </div>
-          <router-link to="/main/index" class="loginBtn">登 录</router-link>
+          <!-- <router-link to="/main/index" class="loginBtn" @click="goLogin()">登 录</router-link> -->
+          <a class="loginBtn" @click="goLogin()">登 录</a>
         </form>
       </div>
     </div>
@@ -31,13 +32,30 @@ export default {
   name: 'login',
   data () {
     return {
-      form: {
-        username: '',
-        password: ''
-      }
+      username: '',
+      password: ''
     }
   },
-  method: {
+  methods: {
+    goLogin () {
+      if (this.username === '' || this.password === '') {
+        alert('请输入登录信息!')
+      } else {
+        let self = this
+        let data = {
+          loginName: this.username,
+          loginPawd: this.password
+        }
+        self.$http.post('/login', data).then((res) => {
+          console.log(res.data)
+          console.log('登录成功')
+          this.$router.push('/main/index')
+        }, (error) => {
+          console.log(error)
+        })
+        // this.$router.push('/main/index')
+      }
+    }
   }
 }
 </script>
