@@ -32,8 +32,8 @@ export default {
   name: 'login',
   data () {
     return {
-      username: '',
-      password: ''
+      username: 'super',
+      password: '123456'
     }
   },
   methods: {
@@ -43,10 +43,10 @@ export default {
       } else {
         let self = this
         let data = {
-          loginName: this.username,
-          loginPawd: this.password
+          loginname: this.username,
+          password: this.password
         }
-        self.$http.post('/login', data).then((res) => {
+        self.$http.post('/account/loginin', data).then((res) => {
           console.log(res.data)
           console.log('登录成功')
           this.$router.push('/main/index')
