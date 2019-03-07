@@ -49,7 +49,8 @@ export default {
         // self.$http.get('/account/loginin', data).then((res) => {
         self.$http.get('/account/loginin?loginname=' + data.loginname + '&password=' + data.password).then((res) => {
           console.log(res.data)
-          console.log('登录成功')
+          // console.log('登录成功')
+          window.sessionStorage.userInfo = res.data.user_name
           this.$router.push('/main/index')
         }, (error) => {
           console.log(error)
