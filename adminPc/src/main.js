@@ -7,8 +7,8 @@ import VueRouter from 'vue-router'
 import Routers from './router/index'
 
 Vue.config.productionTip = false
-axios.default.baseURL = 'http://localhost:89/api/'
-axios.default.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+axios.defaults.baseURL = 'http://localhost:89/api/'
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 Vue.prototype.$http = axios
 Vue.use(VueRouter)
 

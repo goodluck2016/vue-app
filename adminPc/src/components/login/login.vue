@@ -10,11 +10,11 @@
         <form class="login-form">
           <div class="form-item">
             <label>用户名</label>
-            <input type="text" v-model="form.username" placeholder="请输入用户名">
+            <input type="text" v-model="username" placeholder="请输入用户名">
           </div>
           <div class="form-item">
             <label>密码</label>
-            <input type="text" v-model="form.password" placeholder="请输入密码">
+            <input type="text" v-model="password" placeholder="请输入密码">
           </div>
           <!-- <router-link to="/main/index" class="loginBtn" @click="goLogin()">登 录</router-link> -->
           <a class="loginBtn" @click="goLogin()">登 录</a>
@@ -46,14 +46,14 @@ export default {
           loginname: this.username,
           password: this.password
         }
-        self.$http.post('/account/loginin', data).then((res) => {
+        // self.$http.get('/account/loginin', data).then((res) => {
+        self.$http.get('/account/loginin?loginname=' + data.loginname + '&password=' + data.password).then((res) => {
           console.log(res.data)
           console.log('登录成功')
           this.$router.push('/main/index')
         }, (error) => {
           console.log(error)
         })
-        // this.$router.push('/main/index')
       }
     }
   }
