@@ -46,10 +46,10 @@ export default {
       } else {
         let self = this
         let data = {
-          loginName: this.username,
-          loginPawd: this.password
+          loginname: this.username,
+          password: this.password
         }
-        self.$http.post('/login', data).then((res) => {
+        self.$http.get('/account/loginin?loginname=' + data.loginname + '&password=' + data.password).then((res) => {
           if (res.status === 200) {
             if (res.data.status === 1) {
               window.sessionStorage.userInfo = res.data.user_name

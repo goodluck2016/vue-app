@@ -11,7 +11,7 @@ import './assets/css/base.css'
 // Vue.use(VueLazyload)
 
 Vue.config.productionTip = false
-axios.defaults.baseURL = 'http://localhost:3333/'
+axios.defaults.baseURL = 'http://localhost:89/api/'
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 Vue.prototype.$http = axios
 Vue.use(VueLazyload, {
