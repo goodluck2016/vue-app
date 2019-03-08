@@ -42,6 +42,7 @@ export default {
         alert('请输入登录信息!')
       } else {
         let self = this
+        self.$router.push('/main/index')
         let data = {
           loginname: this.username,
           password: this.password
@@ -51,7 +52,7 @@ export default {
           console.log(res.data)
           // console.log('登录成功')
           window.sessionStorage.userInfo = res.data.user_name
-          this.$router.push('/main/index')
+          self.$router.push('/main/index')
         }, (error) => {
           console.log(error)
         })
