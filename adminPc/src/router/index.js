@@ -4,14 +4,16 @@ import NotFound from '@/components/NotFound'
 import loginRouter from '@/router/login.router'
 import main from '@/components/main'
 import index from '@/components/index'
-import datas from '@/components/datas/datas'
-import marketing from '@/components/marketing/marketing'
+import datasLayout from '@/components/datas/layout'
+import datasList from '@/components/datas/datasList'
+import datasAdd from '@/components/datas/datasAdd'
 import member from '@/components/member/member'
-import user from '@/components/user/user'
-import points from '@/components/points/points'
 import goods from '@/components/goods/goods'
 import order from '@/components/order/order'
-import manager from '@/components/manager/manager'
+import managerLayout from '@/components/manager/layout'
+import managerList from '@/components/manager/managerList'
+import managerAdd from '@/components/manager/managerAdd'
+import managerArea from '@/components/manager/managerArea'
 import setting from '@/components/setting/setting'
 // Vue.use(Router)
 
@@ -34,23 +36,22 @@ const routers = [
       },
       {
         path: 'datas',
-        component: datas
-      },
-      {
-        path: 'marketing',
-        component: marketing
+        component: datasLayout,
+        redirect: '/main/datas/datasList',
+        children: [
+          {
+            path: 'datasList',
+            component: datasList
+          },
+          {
+            path: 'datasAdd',
+            component: datasAdd
+          }
+        ]
       },
       {
         path: 'member',
         component: member
-      },
-      {
-        path: 'user',
-        component: user
-      },
-      {
-        path: 'points',
-        component: points
       },
       {
         path: 'goods',
@@ -62,7 +63,22 @@ const routers = [
       },
       {
         path: 'manager',
-        component: manager
+        component: managerLayout,
+        redirect: '/main/manager/managerList',
+        children: [
+          {
+            path: 'managerList',
+            component: managerList
+          },
+          {
+            path: 'managerAdd',
+            component: managerAdd
+          },
+          {
+            path: 'managerArea',
+            component: managerArea
+          }
+        ]
       },
       {
         path: 'setting',
