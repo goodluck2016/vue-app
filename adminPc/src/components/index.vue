@@ -7,7 +7,7 @@
 export default {
   data () {
     return {
-      msg: 'index'
+      msg: '首页'
     }
   },
   mounted () {},

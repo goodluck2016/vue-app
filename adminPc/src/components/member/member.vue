@@ -100,23 +100,23 @@ export default {
     },
     updateCity () {
       var self = this
-      self.arr.forEach (function (item, index) {
+      self.arr.forEach(function (item, index) {
         if (item.name === self.prov) {
           self.cityArr = item.sub
-         // return
+          // return
         }
       })
       self.city = self.cityArr[1].name
     },
     updateDistrict () {
-     var self = this
-     self.cityArr.forEach (function (item, index) {
-       if (item.name === self.city) {
-         self.districtArr = item.sub
-         // return
-       }
-     })
-     self.districtArr && self.districtArr.length > 0 ? self.district = self.districtArr[1].name : self.district = ''
+      var self = this
+      self.cityArr.forEach(function (item, index) {
+        if (item.name === self.city) {
+          self.districtArr = item.sub
+          // return
+        }
+      })
+      self.districtArr && self.districtArr.length > 0 ? self.district = self.districtArr[1].name : self.district = ''
     }
   }
 }
@@ -125,6 +125,9 @@ export default {
 .form-item-l{
     float:left;
     width: 60px;
+}
+.form-item-l{
+  line-height: 30px;
 }
 .form-item-r{
     margin-left:70px;

@@ -6,10 +6,7 @@
         <ul>
           <router-link to="/main/index" tag="li" active-class="menu-actived" exact>首页</router-link>
           <router-link to="/main/datas" tag="li">数据</router-link>
-          <router-link to="/main/marketing" tag="li">推广</router-link>
           <router-link to="/main/member" tag="li">会员中心</router-link>
-          <router-link to="/main/user" tag="li">用户中心</router-link>
-          <router-link to="/main/points" tag="li">积分</router-link>
           <router-link to="/main/goods" tag="li">产品</router-link>
           <router-link to="/main/order" tag="li">订单</router-link>
           <router-link to="/main/manager" tag="li">管理员</router-link>
