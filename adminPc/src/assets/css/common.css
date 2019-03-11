@@ -2,8 +2,11 @@
   margin: 0;
   padding:0;
 }
+*, :after, :before {
+    box-sizing: border-box;
+}
 body {
-  min-width:1100px;
+  min-width:1200px;
   background: #fafafa;
   color: #333;
   font-size: 14px;
@@ -26,7 +29,7 @@ a {
   width:100%;
   height:100%;
 }
-.header{
+.header-w{
     position:fixed;
     top:0;
     left:0;
@@ -36,6 +39,9 @@ a {
     background: #fff;
     border-bottom:1px solid #e0e0e0;
     box-sizing: border-box;
+}
+.header{
+  min-width:1200px;
 }
 .logo{
     float:left;
@@ -47,6 +53,7 @@ a {
 }
 .menu-wrap{
   float:left;
+  width:600px;
   margin:15px 30px;
   height:30px;
   line-height: 30px;
@@ -141,4 +148,14 @@ a {
   box-sizing: border-box;
   border-radius: 3px;
   min-height: 600px;
+}
+
+.txt{
+  border-left: 4px solid #f60;
+  padding-left:6px;
+  line-height: 16px;
+  margin-bottom: 20px;
+}
+.mb20{
+  margin-bottom:20px;
 }
