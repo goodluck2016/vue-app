@@ -1,5 +1,6 @@
 <template>
-  <div class="mainR-cont">新增
+  <div class="mainR-cont">
+    <div class="txt">新增</div>
   </div>
 </template>
 <script>

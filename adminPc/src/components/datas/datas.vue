@@ -1,5 +1,6 @@
 <template>
   <div class="mainbox">
+    <div class="txt">列表</div>
     <div class="table-w">
         <div class="table">
             <div class="table-header">
@@ -264,8 +265,5 @@ export default {
 }
 .icon-arrow-r:before {
     content: "\f3d2";
-}
-*, :after, :before {
-    box-sizing: border-box;
 }
 </style>
