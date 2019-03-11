@@ -8,7 +8,12 @@ import datasLayout from '@/components/datas/layout'
 import datasList from '@/components/datas/datasList'
 import datasAdd from '@/components/datas/datasAdd'
 import member from '@/components/member/member'
-import goods from '@/components/goods/goods'
+import cartLayout from '@/components/cart/layout'
+import cart from '@/components/cart/cart'
+import goodsLayout from '@/components/goods/layout'
+import goodsAdd from '@/components/goods/goodsAdd'
+import goodsList from '@/components/goods/goods'
+import detail from '@/components/detail/detail'
 import order from '@/components/order/order'
 import managerLayout from '@/components/manager/layout'
 import managerList from '@/components/manager/managerList'
@@ -55,7 +60,33 @@ const routers = [
       },
       {
         path: 'goods',
-        component: goods
+        component: goodsLayout,
+        redirect: '/main/goods/goodsList',
+        children: [
+          {
+            path: 'goodsAdd',
+            component: goodsAdd
+          },
+          {
+            path: 'goodsList',
+            component: goodsList
+          }
+        ]
+      },
+      {
+        path: 'cart',
+        component: cartLayout,
+        redirect: '/main/cart/cart',
+        children: [
+          {
+            path: 'cart',
+            component: cart
+          }
+        ]
+      },
+      {
+        path: 'detail/:id',
+        component: detail
       },
       {
         path: 'order',
