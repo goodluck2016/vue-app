@@ -49,10 +49,13 @@ export default {
         }
         // self.$http.get('/account/loginin', data).then((res) => {
         self.$http.get('/account/loginin?loginname=' + data.loginname + '&password=' + data.password).then((res) => {
-          console.log(res.data)
-          // console.log('登录成功')
-          window.sessionStorage.userInfo = res.data.user_name
-          self.$router.push('/main/index')
+          console.log(res.data.Message)
+          if (res.data.Success === true) {
+            window.sessionStorage.userInfo = res.data.Data.LoginName
+            self.$router.push('/main/index')
+          } else {
+            console.log(res.data.Message)
+          }
         }, (error) => {
           console.log(error)
         })
@@ -104,7 +107,7 @@ export default {
 }
 .form-item label{
   float:left;
-  width:50px;
+  width:52px;
   padding-right:10px;
 }
 .form-item input{
@@ -117,7 +120,7 @@ export default {
 }
 .loginBtn{
   display:block;
-  margin:20px 0 0 60px;
+  margin:20px 0 0 52px;
   width:180px;
   height:30px;
   line-height: 30px;

@@ -1,5 +1,7 @@
 <template>
-  <div class="mainbox">{{msg}}</div>
+  <div class="mainbox">
+    <div class="txt">{{msg}}</div>
+  </div>
 </template>
 <script>
 export default {

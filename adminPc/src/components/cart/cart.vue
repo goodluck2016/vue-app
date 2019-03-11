@@ -1,10 +1,6 @@
 <template>
   <div class="mainbox">
-    <div class="txt">商品列表</div>
-    <!-- <div class="mb20">
-      <router-link to="/main/goods/goodsAdd" class="addBtn" tag="div">新增商品</router-link>
-      <div class="addBtn" @click="add()">新增商品</div>
-    </div> -->
+    <div class="txt">购物车列表</div>
     <div class="table-w">
       <div class="table">
         <div class="table-header">
@@ -55,41 +51,30 @@
         </div>
       </div>
     </div>
-    <div class="layer" v-if="maskShow === true">
-      <div class="mask"></div>
-      <div class="layerBox">
-        <div class="layerBox-c">
-          <p class="title">主银，确定删除此商品吗？</p>
-          <div class="btnGroup">
-            <a href="javascript:void(0)" class="confirm" @click="confirm()">确定</a>
-            <a href="javascript:void(0)" class="cancel" @click="cancel()">取消</a>
-          </div>
-          <div class="closeBtn" @click="cancel()">&#10005;</div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'goods',
   data () {
     return {
+      loginName: '',
       list: [],
-      ImageUrls: require('../../assets/images/logo.png'),
-      productId: '',
       id: '',
-      maskShow: false
+      ImageUrls: require('../../assets/images/logo.png')
     }
   },
   mounted () {
-    this.getGoods()
+    this.getList()
   },
   methods: {
-    getGoods () {
+    getList () {
       let self = this
-      self.$http.get('/Product/GetProducts').then((res) => {
-        // console.log(res.data)
+      console.log('userInfo', window.sessionStorage.userInfo)
+      if (window.sessionStorage.userInfo) {
+        self.loginName = window.sessionStorage.userInfo
+      }
+      self.$http.get('/Cart/MyCart?loginName=' + self.loginName).then((res) => {
+        console.log(res.data)
         self.list = res.data
       })
     },
@@ -100,31 +85,8 @@ export default {
         self.$router.push('/main/detail/id=' + self.id)
       }
     },
-    del (item, index) {
-      let self = this
-      self.productId = item.Id
-      self.maskShow = true
-      // self.$http.post('/Product/RemoveProduct?productId=' + item.Id).then((res) => {
-      //   if (res.data.Message === '产品下架成功') {
-      //     // self.$router.go(0)
-      //     console.log('删除成功')
-      //   } else {
-      //     console.log(res.data.Message)
-      //   }
-      // }, (error) => {
-      //   console.log(error)
-      // })
-    },
-    confirm () {
-      let self = this
-      self.$http.post('/Product/RemoveProduct?productId=' + self.productId).then((res) => {
-        console.log(res.data.Message)
-      })
-      self.maskShow = false
-    },
-    cancel () {
-      this.maskShow = false
-    }
+    add () {},
+    del (item, indwx) {}
   }
 }
 </script>
@@ -200,7 +162,6 @@ export default {
   width:20px;
   height:20px;
   line-height:18px;
-  /*border:1px solid #eee;*/
   font-size:16px;
   text-align:center;
   color:#999;

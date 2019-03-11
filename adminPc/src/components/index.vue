@@ -1,6 +1,6 @@
 <template>
   <div class="mainbox">
-    {{msg}}
+    <div class="txt">{{msg}}</div>
   </div>
 </template>
 <script>

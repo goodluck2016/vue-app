@@ -1,5 +1,6 @@
 <template>
   <div class="mainbox">
+    <div class="txt">{{msg}}</div>
     <div class="form">
         <div class="form-item">
             <label class="form-item-l">地区：</label>
@@ -23,6 +24,7 @@ export default {
   name: 'member',
   data () {
     return {
+      msg: '会员',
       arr: [
         {
           name: '北京',
