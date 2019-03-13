@@ -4,7 +4,7 @@
     <div class="form">
         <div class="form-item">
             <label class="form-item-l">地区：</label>
-            <div  class="form-item-r">
+            <div class="form-item-r">
                 <select class="selectbox" v-model="prov" @change="updateCity();updateDistrict()">
                     <option v-for="(v, index) in arr" :key="index">{{v.name}}</option>
                 </select>
@@ -15,6 +15,29 @@
                     <option v-for="(v, index) in districtArr" :key="index">{{v.name}}</option>
                 </select>
             </div>
+        </div>
+        <div class="form-item">
+          <label class="form-item-l">图片：</label>
+          <div class="form-item-r">
+            <div class="uploadImg">
+              <div class="upload-content">
+                <div class="upload-title">
+                  <p>{{upTitle}}</p>
+                  <p class="show-num">{{upNum}}/{{uploadNum}}</p>
+                </div>
+                <ul class="img-list">
+                  <li class="show-img" v-for="(item, index) in imgList" :key="index">
+                    <img :src="item" alt="">
+                    <kk-icon :class="isDel == true ? '' : 'hide-del'" name="error" color="#FF685D" size="0.4rem" @click.native="delImg(index)"></kk-icon>
+                  </li>
+                  <div class="uploadSec">
+                    <img :src="src" alt="上传图标">
+                    <input type="file" value="" id="choose" @change='onUpload' multiple>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
   </div>
@@ -92,7 +115,14 @@ export default {
       city: '北京',
       district: '东城区',
       cityArr: [],
-      districtArr: []
+      districtArr: [],
+      upTitle: '',
+      upNum: '',
+      uploadNum: '',
+      imgList: [],
+      globalPath: '../../assets/',
+      src: require('../../assets/images/insurance/upload.jpg'),
+      isDel: false
     }
   },
   methods: {
@@ -119,29 +149,148 @@ export default {
         }
       })
       self.districtArr && self.districtArr.length > 0 ? self.district = self.districtArr[1].name : self.district = ''
+    },
+    delImg (index) {},
+    onUpload (e) { // 上传
+      let photoFile = e.target
+      let val = e.target.value
+      if (photoFile.files.length === 0) return false
+      for (let i = 0; i < photoFile.files.length; i++) {
+        this.fileAdd(photoFile.files[i], i)
+      }
+    },
+    fileAdd (file, index) {
+      let csrf_token = this.getCookie('XSRF-TOKEN')
+      let formFile = new FormData()
+      let imgName = 'img0'
+      formFile.append(imgName, file)
+      formFile.append('_token', csrf_token)
+      let name = file.name
+      let size = file.size
+      let types = '.jpg, .jpeg, .png, .gif'
+      let fileExt = name.substring(name.lastIndexOf('.')).toLowerCase()
+      let result = types.indexOf(fileExt)
+      if (result < 0) {
+        this.$dialog.toase({
+          mes: '图片格式不正确',
+          timeout: 1000
+        })
+        return false
+      }
+      if (size > 1 * 1024 * 1024) {
+        this.$dialog.toast({
+          mes: '图片大小不能大于1M',
+          timeout: 1000
+        })
+        return false
+      }
+      if (this.fileList.length >= this.uploadNum) {
+        this.$dialog.toast({
+          mes: '图片最多只能上传' + this.uploadNum + '张',
+          timeout: 1000
+        })
+        return false
+      }
+      this.$http.post(this.upUrl, formFile).then((res) => {
+        this.upNum = this.fileList.length + 1
+        this.fileList.push(file)
+        let imgUrl = this.showUrl + res.data.data
+        let upImg = res.data.data
+        this.imgList.push(imgUrl)
+        this.upImgList.push(upImg)
+        let upImgAll = this.upImgList.join('.')
+        this.$emit('input', upImgAll)
+      }).catch((err) => {
+        console.log(err)
+      })
     }
   }
 }
 </script>
 <style scoped>
+.uploadImg{
+  text-align: left;
+}
+.upload-content{
+    margin-left: 0.3rem;
+}
+.upload-title{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0.3rem 0.3rem 0;
+}
+.show-num{
+  color: #c9c9c9;
+}
+.img-list{
+  display: inline-block;
+  margin: 0.6rem 0.3rem 0.3rem 0;
+}
+.show-img{
+  position: relative;
+  display: inline-block;
+  margin-right: 5px;
+  height: 64px;
+  width: 64px;
+}
+.show-img img{
+  width: 100%;
+  height: 100%;
+}
+.hide-del{
+  display: none;
+}
+.yd-icon-error{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.uploadSec{
+  position: relative;
+  display: inline-block;
+  width: 1.3rem;
+  height: 1.3rem;
+  overflow: hidden;
+}
+.uploadSec{
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+}
+.uploadSec img{
+  width: 100%;
+  height: 100%;
+}
+#choose{
+  position: absolute;
+  /*height: 100%;*/
+  left: 0;
+  top: 0;
+  opacity: 0;
+  height: 64px;
+  width: 64px;
+  cursor: pointer;
+}
 .form-item-l{
-    float:left;
-    width: 60px;
+  float:left;
+  width: 60px;
 }
 .form-item-l{
   line-height: 30px;
 }
 .form-item-r{
-    margin-left:70px;
+  margin-left:70px;
 }
 .selectbox{
-    display:inline-block;
-    margin-right: 10px;
-    border: 1px solid #e0e0e0;
-    height:30px;
-    line-height: 30px;
-    border-radius: 3px;
-    padding:0 5px;
-    width: 90px;
+  display:inline-block;
+  margin-right: 10px;
+  border: 1px solid #e0e0e0;
+  height:30px;
+  line-height: 30px;
+  border-radius: 3px;
+  padding:0 5px;
+  width: 90px;
 }
 </style>

@@ -29,8 +29,8 @@ export default {
   data () {
     return {
       titleName: '登录',
-      username: '',
-      password: ''
+      username: 'super',
+      password: '123456'
     }
   },
   mounted () {
