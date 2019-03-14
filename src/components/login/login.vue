@@ -50,13 +50,15 @@ export default {
           password: this.password
         }
         self.$http.get('/account/loginin?loginname=' + data.loginname + '&password=' + data.password).then((res) => {
-          if (res.status === 200) {
-            if (res.data.status === 1) {
-              window.sessionStorage.userInfo = res.data.user_name
-              self.$router.push('/home')
-            }
+          if (res.data.Success === true) {
+            // if (res.data.status === 1) {
+            localStorage.setItem('userInfo', JSON.stringify(res.data))
+            console.log('localStorage', localStorage.userInfo)
+            // window.sessionStorage.userInfo = res.data.user_name
+            self.$router.push('/home')
+            // }
           } else {
-            alert(res.data.msg)
+            alert(res.data.Message)
           }
         }, (error) => {
           console.log(error)
