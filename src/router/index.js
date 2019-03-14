@@ -19,13 +19,22 @@ export default new Router({
   linkActiveClass: 'active',
   routes: [
     {
-      path: '/register',
-      component: register
+      path: '/',
+      redirect: '/login'
+    },
+    {
+      path: '*',
+      component: login
     },
     {
       path: '/login',
       component: login
     },
+    {
+      path: '/register',
+      component: register
+    },
+
     {
       path: '/home',
       component: home
@@ -69,14 +78,6 @@ export default new Router({
     {
       path: '/about',
       component: about
-    },
-    {
-      path: '/',
-      redirect: '/home'
-    },
-    {
-      path: '*',
-      component: home
     }
   ]
 })
