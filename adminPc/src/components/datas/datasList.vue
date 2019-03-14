@@ -11,7 +11,7 @@
                     <thead>
                         <tr>
                             <th>
-                                <div class="table-cell">序号</div>
+                                <div class="table-cell"><label><input type="checkbox" v-model="checkAll" @change="changeAll()" />全选</label></div>
                             </th>
                             <th>
                                 <div class="table-cell">姓名</div>
@@ -37,7 +37,7 @@
                     <tbody class="table-tbody">
                         <tr class="table-row" v-for="(item, index) in list" :key="index">
                             <td>
-                                <div class="table-cell">{{index+1}}</div>
+                                <div class="table-cell"><label><input type="checkbox" v-model="item.check" @change="changeCur()" /></label></div>
                             </td>
                             <td>
                                 <div class="table-cell">{{item.name}}</div>
@@ -96,6 +96,7 @@ export default {
   name: 'datas',
   data () {
     return {
+      checkAll: false,
       list: [
         {id: 1, name: '王二小', age: 22, address: '北京市朝阳区芍药居', check: false},
         {id: 2, name: '李小龙', age: 28, address: '北京市海淀区西二旗', check: false},
@@ -109,6 +110,20 @@ export default {
         {id: 10, name: '胡歌', age: 26, address: '上海静安江河大道', check: false},
         {id: 11, name: '项飞', age: 26, address: '楚国飞天大道1010号', check: false}
       ]
+    }
+  },
+  mounted () {},
+  methods: {
+    changeAll () {
+      this.list.forEach((item) => {
+        item.check = this.checkAll
+      })
+    },
+    changeCur () {
+      let selected = this.list.filter((item) => {
+        return item.check === true
+      })
+      selected.length === this.list.length ? this.checkAll = true : this.checkAll = false
     }
   }
 }

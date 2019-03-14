@@ -126,84 +126,82 @@ export default {
     }
   },
   methods: {
-    beforeMount () {
-      this.updateCity()
-      this.updateDistrict()
-    },
-    updateCity () {
-      var self = this
-      self.arr.forEach(function (item, index) {
-        if (item.name === self.prov) {
-          self.cityArr = item.sub
-          // return
-        }
-      })
-      self.city = self.cityArr[1].name
-    },
-    updateDistrict () {
-      var self = this
-      self.cityArr.forEach(function (item, index) {
-        if (item.name === self.city) {
-          self.districtArr = item.sub
-          // return
-        }
-      })
-      self.districtArr && self.districtArr.length > 0 ? self.district = self.districtArr[1].name : self.district = ''
-    },
-    delImg (index) {},
-    onUpload (e) { // 上传
-      let photoFile = e.target
-      let val = e.target.value
-      if (photoFile.files.length === 0) return false
-      for (let i = 0; i < photoFile.files.length; i++) {
-        this.fileAdd(photoFile.files[i], i)
-      }
-    },
-    fileAdd (file, index) {
-      let csrf_token = this.getCookie('XSRF-TOKEN')
-      let formFile = new FormData()
-      let imgName = 'img0'
-      formFile.append(imgName, file)
-      formFile.append('_token', csrf_token)
-      let name = file.name
-      let size = file.size
-      let types = '.jpg, .jpeg, .png, .gif'
-      let fileExt = name.substring(name.lastIndexOf('.')).toLowerCase()
-      let result = types.indexOf(fileExt)
-      if (result < 0) {
-        this.$dialog.toase({
-          mes: '图片格式不正确',
-          timeout: 1000
-        })
-        return false
-      }
-      if (size > 1 * 1024 * 1024) {
-        this.$dialog.toast({
-          mes: '图片大小不能大于1M',
-          timeout: 1000
-        })
-        return false
-      }
-      if (this.fileList.length >= this.uploadNum) {
-        this.$dialog.toast({
-          mes: '图片最多只能上传' + this.uploadNum + '张',
-          timeout: 1000
-        })
-        return false
-      }
-      this.$http.post(this.upUrl, formFile).then((res) => {
-        this.upNum = this.fileList.length + 1
-        this.fileList.push(file)
-        let imgUrl = this.showUrl + res.data.data
-        let upImg = res.data.data
-        this.imgList.push(imgUrl)
-        this.upImgList.push(upImg)
-        let upImgAll = this.upImgList.join('.')
-        this.$emit('input', upImgAll)
-      }).catch((err) => {
-        console.log(err)
-      })
-    }
+    // beforeMount () {
+    //   this.updateCity()
+    //   this.updateDistrict()
+    // },
+    // updateCity () {
+    //   var self = this
+    //   self.arr.forEach(function (item, index) {
+    //     if (item.name === self.prov) {
+    //       self.cityArr = item.sub
+    //     }
+    //   })
+    //   self.city = self.cityArr[1].name
+    // },
+    // updateDistrict () {
+    //   var self = this
+    //   self.cityArr.forEach(function (item, index) {
+    //     if (item.name === self.city) {
+    //       self.districtArr = item.sub
+    //     }
+    //   })
+    //   self.districtArr && self.districtArr.length > 0 ? self.district = self.districtArr[1].name : self.district = ''
+    // },
+    // delImg (index) {},
+    // onUpload (e) {
+    //   let photoFile = e.target
+    //   let val = e.target.value
+    //   if (photoFile.files.length === 0) return false
+    //   for (let i = 0; i < photoFile.files.length; i++) {
+    //     this.fileAdd(photoFile.files[i], i)
+    //   }
+    // }
+    // fileAdd (file, index) {
+    //   let csrf_token = this.getCookie('XSRF-TOKEN')
+    //   let formFile = new FormData()
+    //   let imgName = 'img0'
+    //   formFile.append(imgName, file)
+    //   formFile.append('_token', csrf_token)
+    //   let name = file.name
+    //   let size = file.size
+    //   let types = '.jpg, .jpeg, .png, .gif'
+    //   let fileExt = name.substring(name.lastIndexOf('.')).toLowerCase()
+    //   let result = types.indexOf(fileExt)
+    //   if (result < 0) {
+    //     this.$dialog.toase({
+    //       mes: '图片格式不正确',
+    //       timeout: 1000
+    //     })
+    //     return false
+    //   }
+    //   if (size > 1 * 1024 * 1024) {
+    //     this.$dialog.toast({
+    //       mes: '图片大小不能大于1M',
+    //       timeout: 1000
+    //     })
+    //     return false
+    //   }
+    //   if (this.fileList.length >= this.uploadNum) {
+    //     this.$dialog.toast({
+    //       mes: '图片最多只能上传' + this.uploadNum + '张',
+    //       timeout: 1000
+    //     })
+    //     return false
+    //   }
+    //   this.$http.post(this.upUrl, formFile).then((res) => {
+    //     this.upNum = this.fileList.length + 1
+    //     this.fileList.push(file)
+    //     let imgUrl = this.showUrl + res.data.data
+    //     let upImg = res.data.data
+    //     this.imgList.push(imgUrl)
+    //     this.upImgList.push(upImg)
+    //     let upImgAll = this.upImgList.join('.')
+    //     this.$emit('input', upImgAll)
+    //   }).catch((err) => {
+    //     console.log(err)
+    //   })
+    // }
   }
 }
 </script>
