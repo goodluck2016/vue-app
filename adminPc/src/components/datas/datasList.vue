@@ -11,7 +11,7 @@
                     <thead>
                         <tr>
                             <th>
-                                <div class="table-cell"><label><input type="checkbox" v-model="checkAll" @change="changeAll()" />全选</label></div>
+                                <div class="table-cell"><label><input type="checkbox" v-model="checkAll"/></label></div>
                             </th>
                             <th>
                                 <div class="table-cell">姓名</div>
@@ -35,7 +35,7 @@
                         <col width="8%"><col width="20%"><col width="20%"><col width="32%"><col width="20%">
                     </colgroup>
                     <tbody class="table-tbody">
-                        <tr class="table-row" v-for="(item, index) in list" :key="index">
+                        <tr class="table-row" v-for="(item, index) in lists" :key="index">
                             <td>
                                 <div class="table-cell"><label><input type="checkbox" v-model="item.check" @change="changeCur()" /></label></div>
                             </td>
@@ -59,7 +59,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="table-tip" v-if="list.length===0">
+            <div class="table-tip" v-if="lists.length===0">
                 <table cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr>
@@ -68,22 +68,20 @@
                     </tbody>
                 </table>
             </div>
+<!--             <div class="pagebox">
+              <label><input type="checkbox" v-model="checkAll" @change="changeAll()" />全选</label>
+              <Page :curpage="curpage" :pagenum="pagenum" :total="total" :items="items" />
+            </div> -->
             <div class="pagebox">
-                <ul class="page">
-                    <span class="page-total">共 11 条</span>
-                    <li class="page-prev" title="上一页">
-                        <a><!-- <i class="icon icon-arrow-l"></i> -->&lt;</a>
+                <label><input type="checkbox" v-model="checkAll" @change="changeAll()" />全选</label>
+                <ul class="pagelist">
+                    <span class="page-total">共{{pagenum}}页, {{total}}条</span>
+                    <li class="page-prev" title="上一页"  @click="curpage === 1 ? '' : getList(curpage-1)">
+                        <a href="javascript:void(0)">&lt;</a>
                     </li>
-                    <li title="1" class="page-item"><a>1</a></li>
-                    <li class="page-item" title="2"><a>2</a></li>
-                    <li class="page-item" title="3"><a>3</a></li>
-                    <li class="page-item page-item-active" title="4"><a>4</a></li>
-                    <li class="page-item" title="5"><a>5</a></li>
-                    <li class="page-item" title="6"><a>6</a></li>
-                    <li class="page-item-jump-next" title="向后 5 页"><a><!-- <i class="icon icon-arrow-r"></i> -->... </a></li>
-                    <li class="page-item" title="10"><a>10</a></li>
-                    <li class="page-next" title="下一页">
-                        <a><!-- <i class="icon icon-arrow-r"></i> -->&gt;</a>
+                    <li :title="{i}" class="page-item" :class="{'page-item-active': i === curpage }" v-for="i in pagenum" :key="i" @click="getList(i)"><a href="javascript:void(0)">{{i}}</a></li>
+                    <li class="page-next" title="下一页" @click="curpage === pagenum ? '' : getList(curpage+1)">
+                        <a href="javascript:void(0)">&gt;</a>
                     </li>
                 </ul>
             </div>
@@ -92,12 +90,18 @@
   </div>
 </template>
 <script>
+import Page from '../common/page'
 export default {
   name: 'datas',
   data () {
     return {
       checkAll: false,
-      list: [
+      curpage: 1, // 当前页
+      pagenum: 1, // 总页数
+      pagesize: 5, // 每页条数,
+      total: 0, // 全部数据
+      items: [], // 当前页数据
+      arr: [
         {id: 1, name: '王二小', age: 22, address: '北京市朝阳区芍药居', check: false},
         {id: 2, name: '李小龙', age: 28, address: '北京市海淀区西二旗', check: false},
         {id: 3, name: '李世明', age: 24, address: '上海市浦东新区世纪大道', check: false},
@@ -109,21 +113,42 @@ export default {
         {id: 9, name: '战狼', age: 26, address: '地球一号118飞天仓', check: false},
         {id: 10, name: '胡歌', age: 26, address: '上海静安江河大道', check: false},
         {id: 11, name: '项飞', age: 26, address: '楚国飞天大道1010号', check: false}
-      ]
+      ],
+      lists: []
     }
   },
-  mounted () {},
+  components: {
+    Page
+  },
+  created () {},
+  mounted () {
+    this.getList(this.curpage)
+  },
   methods: {
     changeAll () {
-      this.list.forEach((item) => {
+      this.lists.forEach((item) => {
         item.check = this.checkAll
       })
     },
     changeCur () {
-      let selected = this.list.filter((item) => {
+      let selected = this.lists.filter((item) => {
         return item.check === true
       })
-      selected.length === this.list.length ? this.checkAll = true : this.checkAll = false
+      selected.length === this.lists.length ? this.checkAll = true : this.checkAll = false
+    },
+    getList (cur) {
+      let self = this
+      self.curpage = cur || self.curpage
+      // console.log('cur', cur)
+      self.total = self.arr.length
+      self.pagenum = Math.ceil(self.total / self.pagesize)
+      // console.log('pagenum', self.pagenum)
+      let indexStart = (self.curpage - 1) * self.pagesize
+      let indexEnd = ((self.curpage - 1) * self.pagesize + self.pagesize)
+      // console.log('indexStart', indexStart)
+      // console.log('indexEnd', indexEnd)
+      self.lists = self.arr.slice(indexStart, indexEnd)
+      // console.log('lists', self.lists)
     }
   }
 }
@@ -161,7 +186,6 @@ export default {
 }
 .table table {
     width:100%;
-    /*table-layout: fixed;*/
 }
 .table td, .table th {
     min-width: 0;
@@ -196,10 +220,21 @@ export default {
 .pagebox{
     padding:20px;
 }
-.page{
+.pagebox label{
+    float:left;
+    margin-top:10px;
+    margin-left: -3px
+}
+.pagebox label input{
+    margin-right:5px;
+}
+.pagelist{
     height:32px;
     float:right;
     margin-bottom: 20px;
+}
+.pagelist a{
+    text-decoration: none;
 }
 .page-total {
     float: left;
@@ -217,6 +252,10 @@ export default {
     text-align: center;
     float: left;
     list-style: none;
+}
+.page-disabled{
+  background: #ccc;
+  color:#ddd;
 }
 .page-prev {
     margin-right: 8px;
@@ -247,12 +286,20 @@ export default {
     background-color: #fff;
 }
 .page-next a, .page-prev a {
-    color: #666;
+    color: #999;
     font-size: 14px;
 }
+.page-next:hover, .page-prev:hover {
+    color: #fff;
+    background: #f60;
+    border-color: #f60;
+}
+.page-next:hover a, .page-prev:hover a{
+    color:#fff;
+}
 .page-item-active {
-    background-color: #39f;
-    border-color: #39f;
+    background-color: #f60;
+    border-color: #f60;
     color:#fff;
 }
 .page-item-active a{
