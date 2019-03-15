@@ -35,7 +35,7 @@
                         <col width="8%"><col width="20%"><col width="20%"><col width="32%"><col width="20%">
                     </colgroup>
                     <tbody class="table-tbody">
-                        <tr class="table-row" v-for="(item, index) in list" :key="index">
+                        <tr class="table-row" v-for="(item, index) in lists" :key="index">
                             <td>
                                 <div class="table-cell">{{index+1}}</div>
                             </td>
@@ -50,16 +50,16 @@
                             </td>
                             <td>
                                 <div class="table-cell">
-                                  <a href="javascript:void(0);" title="查看" class="viewBtn">查看</a>
-                                  <a href="javascript:void(0);" title="编辑" class="EditBtn">编辑</a>
-                                  <a href="javascript:void(0);" title="删除" class="delBtn">删除</a>
+                                  <a href="javascript:void(0);" title="查看" class="viewBtn" @click="goDetail(item.id, index)">查看</a>
+                                  <a href="javascript:void(0);" title="编辑" class="EditBtn" @click="edit(item.id, index)">编辑</a>
+                                  <a href="javascript:void(0);" title="删除" class="delBtn" @click="del(item.id, index)">删除</a>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="table-tip" v-if="list.length===0">
+            <div class="table-tip" v-if="lists.length===0">
                 <table cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr>
@@ -69,8 +69,8 @@
                 </table>
             </div>
             <div class="pagebox">
-                <ul class="page">
-                    <span class="page-total">共 11 条</span>
+                <ul class="pagelist">
+                    <span class="page-total">共{{pagenum}} {{lists.length}} 条</span>
                     <li class="page-prev" title="上一页">
                         <a><!-- <i class="icon icon-arrow-l"></i> -->&lt;</a>
                     </li>
@@ -80,7 +80,7 @@
                     <li class="page-item page-item-active" title="4"><a>4</a></li>
                     <li class="page-item" title="5"><a>5</a></li>
                     <li class="page-item" title="6"><a>6</a></li>
-                    <li class="page-item-jump-next" title="向后 5 页"><a><!-- <i class="icon icon-arrow-r"></i> -->... </a></li>
+                    <li class="page-item-jump-next" title="向后 5 页"><a>... </a></li>
                     <li class="page-item" title="10"><a>10</a></li>
                     <li class="page-next" title="下一页">
                         <a><!-- <i class="icon icon-arrow-r"></i> -->&gt;</a>
@@ -96,7 +96,12 @@ export default {
   name: 'datas',
   data () {
     return {
-      list: [
+      page: {
+        curpage: 1, // 当前页
+        pagenum: 1, // 总页数
+        length: 0, // 总条数
+      },
+      lists: [
         {id: 1, name: '王二小', age: 22, address: '北京市朝阳区芍药居', check: false},
         {id: 2, name: '李小龙', age: 28, address: '北京市海淀区西二旗', check: false},
         {id: 3, name: '李世明', age: 24, address: '上海市浦东新区世纪大道', check: false},
@@ -110,6 +115,12 @@ export default {
         {id: 11, name: '项飞', age: 26, address: '楚国飞天大道1010号', check: false}
       ]
     }
+  },
+  mounted () {
+    this.getList(this.curpage)
+  },
+  methods: {
+    getList () {}
   }
 }
 </script>
