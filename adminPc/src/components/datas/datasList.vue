@@ -100,7 +100,7 @@ export default {
       pagenum: 1, // 总页数
       pagesize: 5, // 每页条数,
       total: 0, // 全部数据
-      items: [], // 当前页数据
+      lists: [], // 当前页数据
       arr: [
         {id: 1, name: '王二小', age: 22, address: '北京市朝阳区芍药居', check: false},
         {id: 2, name: '李小龙', age: 28, address: '北京市海淀区西二旗', check: false},
@@ -113,8 +113,7 @@ export default {
         {id: 9, name: '战狼', age: 26, address: '地球一号118飞天仓', check: false},
         {id: 10, name: '胡歌', age: 26, address: '上海静安江河大道', check: false},
         {id: 11, name: '项飞', age: 26, address: '楚国飞天大道1010号', check: false}
-      ],
-      lists: []
+      ]
     }
   },
   components: {
