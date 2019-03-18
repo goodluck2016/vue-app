@@ -6,7 +6,7 @@
     <div class="login-main">
       <div class="login-l"></div>
       <div class="login-r">
-        <div class="login-txt">登录</div>
+        <div class="login-txt">登 录</div>
         <form class="login-form">
           <div class="form-item">
             <label>用户名</label>
@@ -14,10 +14,14 @@
           </div>
           <div class="form-item">
             <label>密码</label>
-            <input type="text" v-model="password" placeholder="请输入密码">
+            <input type="password" v-model="password" placeholder="请输入密码">
           </div>
-          <!-- <router-link to="/main/index" class="loginBtn" @click="goLogin()">登 录</router-link> -->
           <a class="loginBtn" @click="goLogin()">登 录</a>
+          <p class="rememberMe">
+            <input type="checkbox" v-model="rememberMe" /> 记住密码
+            <router-link class="forget" to="/forget">忘记密码</router-link>
+          </p>
+          <router-link class="btnFb" to="/register">注册</router-link>
         </form>
       </div>
     </div>
@@ -26,14 +30,14 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'login',
   data () {
     return {
-      username: 'super',
-      password: '123456'
+      username: '',
+      password: '',
+      rememberMe: false
     }
   },
   methods: {
@@ -42,13 +46,12 @@ export default {
         alert('请输入登录信息!')
       } else {
         let self = this
-        self.$router.push('/main/index')
         let data = {
           loginname: this.username,
-          password: this.password
+          password: this.password,
+          rememberMe: this.rememberMe
         }
-        // self.$http.get('/account/loginin', data).then((res) => {
-        self.$http.get('/account/loginin?loginname=' + data.loginname + '&password=' + data.password).then((res) => {
+        self.$http.get('/account/loginin?loginName=' + data.loginname + '&password=' + data.password + '&rememberMe=' + data.rememberMe).then((res) => {
           console.log(res.data.Message)
           if (res.data.Success === true) {
             window.sessionStorage.userInfo = res.data.Data.LoginName
@@ -85,7 +88,7 @@ export default {
 }
 .login-r{
   margin-right:0;
-  padding-top:50px;
+  padding-top:40px;
   float:right;
   width:320px;
   height:350px;
@@ -98,7 +101,7 @@ export default {
   letter-spacing: 10px;
 }
 .login-form{
-  padding: 50px 30px 20px;
+  padding: 30px 30px 20px;
 }
 .form-item{
   height:30px;
@@ -107,7 +110,7 @@ export default {
 }
 .form-item label{
   float:left;
-  width:52px;
+  width:72px;
   padding-right:10px;
 }
 .form-item input{
@@ -118,18 +121,33 @@ export default {
   padding-left:5px;
   box-sizing: border-box;
 }
-.loginBtn{
+.loginBtn,.btnFb{
   display:block;
-  margin:20px 0 0 52px;
-  width:180px;
+  margin:10px 0 0 72px;
+  width:183px;
   height:30px;
   line-height: 30px;
-  background: #f60;
-  color:#fff;
+  box-sizing: border-box;
   font-size:16px;
   border-radius: 3px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+}
+.loginBtn{
+  background: #f60;
+  color:#fff;
+}
+.btnFb{
+  background: #fafafa;
+  color:#999;
+  border:1px solid #e0e0e0;
+}
+.rememberMe{
+  margin: 10px 0 0 72px;
+}
+.forget{
+  float:right;
+  margin-right:5px;
 }
 </style>
