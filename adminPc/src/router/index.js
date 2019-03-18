@@ -2,6 +2,8 @@
 // import Router from 'vue-router'
 import NotFound from '@/components/NotFound'
 import loginRouter from '@/router/login.router'
+import registerRouter from '@/router/register.router'
+import forgetRouter from '@/router/forget.router'
 import main from '@/components/main'
 import index from '@/components/index'
 import datasLayout from '@/components/datas/layout'
@@ -123,4 +125,6 @@ const routers = [
   }
 ]
 routers.unshift(loginRouter)
+routers.unshift(registerRouter)
+routers.unshift(forgetRouter)
 export default routers
