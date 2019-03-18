@@ -9,14 +9,14 @@
             <router-link to="/main/datas" tag="li">数据</router-link>
             <router-link to="/main/goods" tag="li">产品</router-link>
             <router-link to="/main/member" tag="li">会员</router-link>
-            <router-link to="/main/order" tag="li">订单</router-link>
+            <!-- <router-link to="/main/order" tag="li">订单</router-link> -->
             <router-link to="/main/manager" tag="li">管理员</router-link>
             <router-link to="/main/setting" tag="li">设置</router-link>
           </ul>
         </div>
         <div class="header-info">
+          <span class="username"><span>{{username}}</span>, 你好</span>
           <a class="login-out" @click="loginOut()" href="javascript:void(0)">退出</a>
-          <!-- <router-link to="/login" class="login-out" @click="loginOut()">退出</router-link> -->
         </div>
       </div>
     </div>
@@ -32,10 +32,24 @@
 export default {
   data () {
     return {
-      msg: ''
+      msg: '',
+      username: ''
     }
   },
+  mounted () {
+    this.getInfo()
+  },
   methods: {
+    getInfo () {
+      if (window.sessionStorage.userInfo) {
+        this.username = window.sessionStorage.userInfo
+      }
+      this.$http.get('/Account/GetAccountInfo?loginName=' + this.username, {}).then((res) => {
+        console.log(res.data.Message)
+      }, (error) => {
+        console.log(error)
+      })
+    },
     loginOut () {
       this.$http.get('/account/LoginOut').then((res) => {
         // console.log('注销', res)
@@ -57,5 +71,13 @@ export default {
   background: #f60;
   color:#fff;
   border-radius: 3px;
+}
+.username{
+  font-size:12px;
+  color:#666;
+  padding-right: 10px;
+}
+.username span{
+  color:#f60;
 }
 </style>
