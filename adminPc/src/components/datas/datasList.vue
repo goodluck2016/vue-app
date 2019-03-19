@@ -68,14 +68,10 @@
                     </tbody>
                 </table>
             </div>
-<!--             <div class="pagebox">
-              <label><input type="checkbox" v-model="checkAll" @change="changeAll()" />全选</label>
-              <Page :curpage="curpage" :pagenum="pagenum" :total="total" :items="items" />
-            </div> -->
             <div class="pagebox">
                 <label><input type="checkbox" v-model="checkAll" @change="changeAll()" />全选</label>
                 <ul class="pagelist">
-                    <span class="page-total">共{{pagenum}}页, {{total}}条</span>
+                    <span class="page-total">共<span>{{pagenum}}</span>页, <span>{{total}}</span>条</span>
                     <li class="page-prev" title="上一页"  @click="curpage === 1 ? '' : getList(curpage-1)">
                         <a href="javascript:void(0)">&lt;</a>
                     </li>
@@ -112,7 +108,8 @@ export default {
         {id: 8, name: '叶问', age: 26, address: '中国武林大道8栋1201号', check: false},
         {id: 9, name: '战狼', age: 26, address: '地球一号118飞天仓', check: false},
         {id: 10, name: '胡歌', age: 26, address: '上海静安江河大道', check: false},
-        {id: 11, name: '项飞', age: 26, address: '楚国飞天大道1010号', check: false}
+        {id: 11, name: '项飞', age: 26, address: '楚国飞天大道1010号', check: false},
+        {id: 12, name: '刘亦菲', age: 28, address: '楚国飞天大道1010号', check: false}
       ]
     }
   },
@@ -240,6 +237,9 @@ export default {
     height: 32px;
     line-height: 32px;
     margin-right: 10px;
+}
+.page-total span{
+    color:#f60;
 }
 .page-item, .page-item-jump-next, .page-item-jump-prev, .page-next, .page-prev {
     min-width: 32px;
